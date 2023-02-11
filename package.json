@@ -2,9 +2,9 @@
   "name": "mas-rover-assignment",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "mars.js",
   "scripts": {
-    "test": "jest"
+    "test": "jestnpm"
   },
   "repository": {
     "type": "git",
