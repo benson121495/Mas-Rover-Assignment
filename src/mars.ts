@@ -1,12 +1,12 @@
-import { Command } from './globalFunction/command';
+import { left, right, forward } from './globalFunction/command';
 import { clear, print, askQuestion } from './console';
 
 
- interface Point {
+type Point = {
     x: number
     y: number
- 
-   }
+
+}
 export function restartApp(): void {
     clear(false);
     print('--------------------------');
@@ -19,28 +19,39 @@ export function restartApp(): void {
 function startPoint(pointLocation: string): void {
 
     if (pointLocation) {
-       const firstPoint :Point = { x : parseInt([...pointLocation][0]) , y : parseInt([...pointLocation][0])}
-        const direction ='N'
-        print(`The Start Location is ${firstPoint.x},${firstPoint.y} , ${direction} !`) ; 
-        return  askQuestion(`Where do you want to go ? ` , insertDirection)
+        const firstPoint: Point = { x: parseInt([...pointLocation][0]), y: parseInt([...pointLocation][0]) }
+        const direction = 'N';
+        print(`The Start Location is ${firstPoint.x},${firstPoint.y} , ${direction} !`);
+        const directionPoint = askQuestion(`Where do you want to go ? `, inputDirection);
+
+        newDirection(directionPoint, firstPoint, direction);
     } else {
-    return backToStartPoint();
+        return backToStartPoint();
     }
 }
 
-function insertDirection(pointDirection : string){
+function inputDirection(pointDirection: string) {
 
-    // if(pointDirection){
-    //     const directionCommend = [...pointDirection];
+    if (pointDirection) {
+        const directionCommend = [...pointDirection];
+        return directionCommend;
+    }
+}
 
-    //     directionCommend.forEach((x) => {
-    //         Command(x);
+function newDirection(xxxx: any[], newPoint: Point, direction: String) {
+    const newDirection: String = "";
 
-    //         print('actual Location');
-    //         return ;
-    //     })
+    xxxx.forEach((x) => {
+        if (x === 'L') {
+            left(direction)
+            
+        } else if (x === 'R') {
+            right(direction)
+        } else if (x === 'M') {
+            forward(newPoint.x, newPoint.y ,direction)
+        }
+    });
 
-    // }
 }
 
 export function backToStartPoint(): void {
