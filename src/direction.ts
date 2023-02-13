@@ -5,7 +5,7 @@ export enum Direction {
     W
 } 
 
-export enum actionCommand {
+export enum Action {
     L,
     R,
     F,

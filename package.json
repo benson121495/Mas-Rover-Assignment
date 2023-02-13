@@ -4,8 +4,8 @@
   "description": "",
   "main": "mars.ts",
   "scripts": {
-    "test": "jestnpm",
-    "start": "nodemon ./src/mars.ts"
+    "test": "jest"
+
   },
   "repository": {
     "type": "git",

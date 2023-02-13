@@ -1,7 +1,7 @@
-import { Direction } from "./Command";
+import { Direction } from "./direction";
 import { Position } from "./grid";
 
-export class RoverState {
+export class Plateau {
     position: Position;
     direction: Direction;
     

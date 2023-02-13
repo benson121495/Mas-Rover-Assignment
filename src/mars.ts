@@ -1,63 +1,44 @@
-import { left, right, forward } from './globalFunction/command';
-import { clear, print, askQuestion } from './console';
+
+import { Plateau } from "./plateau";
+import { Direction, Action } from "./direction";
+import { Grid, Position } from './grid';
+import { TurnLeft, TurnRight , TurnBack, MoveForwardCommandExecutor} from "./moveCommand/differentMoveCommand";
+import { MainCommand } from "./moveCommand/command";
 
 
-type Point = {
-    x: number
-    y: number
+export class Mars {
+    state: Plateau;
+    private grid: Grid;
+    private obstacles: Position[];
 
-}
-export function restartApp(): void {
-    clear(false);
-    print('--------------------------');
-    print('| Welcome to Mars! |');
-    print('--------------------------');
-
-    askQuestion(`Where do you want to start ?  `, startPoint);
-}
-
-function startPoint(pointLocation: string): void {
-
-    if (pointLocation) {
-        const firstPoint: Point = { x: parseInt([...pointLocation][0]), y: parseInt([...pointLocation][0]) }
-        const direction = 'N';
-        print(`The Start Location is ${firstPoint.x},${firstPoint.y} , ${direction} !`);
-        const directionPoint = askQuestion(`Where do you want to go ? `, inputDirection);
-
-        newDirection(directionPoint, firstPoint, direction);
-    } else {
-        return backToStartPoint();
+    constructor(startPosition: Position, startDirection: Direction, grid: Grid = new Grid(Number.MAX_VALUE, Number.MAX_VALUE), obstacles: Position[] = []) {
+        this.state = new Plateau(startPosition, startDirection);
+        this.grid = grid;
+        this.obstacles = obstacles;
     }
-}
 
-function inputDirection(pointDirection: string) {
-
-    if (pointDirection) {
-        const directionCommend = [...pointDirection];
-        return directionCommend;
+    executeCommands(commands: Action[]) {
+        commands.forEach(command => {
+            const directionPoint = this.directionPoint(command)
+            this.state = directionPoint.execute(this.state);
+        });
     }
-}
 
-function newDirection(xxxx: any[], newPoint: Point, direction: String) {
-    const newDirection: String = "";
+    directionPoint(command: Action): MainCommand {
 
-    xxxx.forEach((x) => {
-        if (x === 'L') {
-            left(direction)
-            
-        } else if (x === 'R') {
-            right(direction)
-        } else if (x === 'M') {
-            forward(newPoint.x, newPoint.y ,direction)
+
+        if (command === Action.L) {
+            return new TurnLeft();
+        } else if (command === Action.R) {
+            return new TurnRight();
+        } else if (command === Action.F) {
+            return new TurnBack(this.grid, this.obstacles);
+        } else if (command === Action.B) {
+            return new MoveForwardCommandExecutor(this.grid, this.obstacles);
+        }else {
+            throw "Unknown command!"
         }
-    });
+
+    }
 
 }
-
-export function backToStartPoint(): void {
-    print('***************************************');
-    print('You need to retuen to start point or redirect the location. 😭');
-    askQuestion('Press ENTER to restart! ', restartApp);
-}
-
-restartApp();
