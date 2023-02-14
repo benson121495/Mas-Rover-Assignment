@@ -5,7 +5,7 @@ import { Direction } from "../direction";
 export abstract class TurnCommand implements MainCommand {
     execute(currentState: Plateau): Plateau {
         const newPosition = currentState.position;
-        const newDirection = currentState.direction;
+        const newDirection = this.directions().get(currentState.direction) || 0;
         return new Plateau(newPosition, newDirection);
     }
 

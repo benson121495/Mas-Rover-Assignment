@@ -33,7 +33,7 @@ export abstract class MoveCommandExecutor implements MainCommand {
 
     private isAnObstacle(position: Position): Boolean {
         const isObstacle =
-            (obstacle: { x: number; y: number; }) => obstacle.x === position.x && obstacle.y === position.y;
+            (obstacle :Position) => obstacle.x === position.x && obstacle.y === position.y;
         return this.obstacles.some(isObstacle);
     }
 
@@ -56,7 +56,8 @@ export abstract class MoveCommandExecutor implements MainCommand {
     }
 
     private newCoordinate(currentCoordinate: number, direction: Direction, steps: Map<Direction, number>, limit: number): number {
-        const step = steps.get(direction);
+        // const step = steps.get(direction);
+        const step = Number(steps.get(direction));
         const newCoordinate = currentCoordinate + step;
         return threshold(newCoordinate, limit);
     }

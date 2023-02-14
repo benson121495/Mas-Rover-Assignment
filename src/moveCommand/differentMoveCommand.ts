@@ -53,7 +53,7 @@ export class TurnBack extends MoveCommandExecutor {
     }
 }
 
-export class MoveForwardCommandExecutor extends MoveCommandExecutor {
+export class MoveForward extends MoveCommandExecutor {
     
     protected xSteps(): Map<Direction, number> {
         const steps = new Map<Direction, number>();

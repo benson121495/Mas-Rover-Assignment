@@ -2,7 +2,7 @@
 import { Plateau } from "./plateau";
 import { Direction, Action } from "./direction";
 import { Grid, Position } from './grid';
-import { TurnLeft, TurnRight , TurnBack, MoveForwardCommandExecutor} from "./moveCommand/differentMoveCommand";
+import { TurnLeft, TurnRight , TurnBack, MoveForward} from "./moveCommand/differentMoveCommand";
 import { MainCommand } from "./moveCommand/command";
 
 
@@ -31,10 +31,10 @@ export class Mars {
             return new TurnLeft();
         } else if (command === Action.R) {
             return new TurnRight();
-        } else if (command === Action.F) {
-            return new TurnBack(this.grid, this.obstacles);
         } else if (command === Action.B) {
-            return new MoveForwardCommandExecutor(this.grid, this.obstacles);
+            return new TurnBack(this.grid, this.obstacles);
+        } else if (command === Action.F) {
+            return new MoveForward(this.grid, this.obstacles);
         }else {
             throw "Unknown command!"
         }
