@@ -8,7 +8,7 @@ describe('Mars Rover', () => {
     const startPosition = new Position(0, 0);
     const startDirection = Direction.N;
 
-    test('should start from a given initial point', () => {
+    test('Start Point', () => {
         const rover = new Mars(startPosition, startDirection);
         
         expect(rover.state.position).toBe(startPosition);
@@ -106,7 +106,7 @@ describe('Mars Rover', () => {
         expect(rover.state.position).toEqual(new Position(0, 0));
     });
 
-    test('should return to origin x when is on the edge and facing E and receive forward Action', () => {
+    test('Back to Start Point x when is on the edge and facing E and receive forward Action', () => {
         const xLimit = 5;
         const rover = new Mars(new Position(xLimit, 0), Direction.E, new Grid(xLimit,5));
 
@@ -115,7 +115,7 @@ describe('Mars Rover', () => {
         expect(rover.state.position).toEqual(new Position(0, 0));
     });
 
-    test('should return to origin', () => {
+    test('Back to Start Point', () => {
         const grid = new Grid(3,3);
         const rover = new Mars(new Position(0, 0), Direction.N, grid);
 
@@ -133,7 +133,7 @@ describe('Mars Rover', () => {
         expect(rover.state.direction).toEqual(Direction.W);
     });
 
-    test('should avoid obstacles', () => {
+    test('should be avoid the obstacles', () => {
         const grid = new Grid(2, 2);
         const obstacles = [new Position(1, 1), new Position(2, 2)];
         const rover = new Mars(new Position(0, 0), Direction.N, grid, obstacles);
