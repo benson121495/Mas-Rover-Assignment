@@ -2,6 +2,7 @@ import { MainCommand } from './command';
 import { Plateau } from "../globalValue/plateau";
 import { Direction } from "../globalValue/direction";
 
+// update the new direction
 export abstract class TurnCommand implements MainCommand {
     execute(currentState: Plateau): Plateau {
         const newPosition = currentState.position;

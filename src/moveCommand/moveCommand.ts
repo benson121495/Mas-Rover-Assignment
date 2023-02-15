@@ -4,6 +4,7 @@ import { Plateau } from "../globalValue/plateau";
 import { Direction, Action } from "../globalValue/direction";
 import { Grid, Position } from '../globalValue/grid';
 
+// compare the old position and the new position 
 export abstract class MoveCommandExecutor implements MainCommand {
     private grid: Grid;
     private obstacles: Position[];

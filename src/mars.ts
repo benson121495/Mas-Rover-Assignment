@@ -23,7 +23,7 @@ export class Mars {
             this.state = directionPoint.execute(this.state);
         });
     }
-
+    // define the command which input
     directionPoint(command: Action): MainCommand {
 
 

@@ -2,7 +2,7 @@ import { Direction } from "../globalValue/direction";
 import { TurnCommand } from './turnCommand';
 import { MoveCommandExecutor } from './moveCommand';
 
-
+// turn right function
 export class TurnRight extends TurnCommand {
     protected directions(): Map<Direction, Direction> {
         const directions = new Map<Direction, Direction>();
@@ -15,7 +15,7 @@ export class TurnRight extends TurnCommand {
         return directions;
     }
 }
-
+// turn left function
 export class TurnLeft extends TurnCommand {
     protected directions(): Map<Direction, Direction> {
         const directions = new Map<Direction, Direction>();
@@ -28,7 +28,7 @@ export class TurnLeft extends TurnCommand {
         return directions;
     }
 }
-
+// go back function
 export class TurnBack extends MoveCommandExecutor {
     protected xSteps(): Map<Direction, number> {
         const steps = new Map<Direction, number>();
@@ -52,7 +52,7 @@ export class TurnBack extends MoveCommandExecutor {
         return steps;
     }
 }
-
+// forward function
 export class MoveForward extends MoveCommandExecutor {
     
     protected xSteps(): Map<Direction, number> {
