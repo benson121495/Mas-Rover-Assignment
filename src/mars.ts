@@ -1,7 +1,7 @@
 
-import { Plateau } from "./plateau";
-import { Direction, Action } from "./direction";
-import { Grid, Position } from './grid';
+import { Plateau } from "./globalValue/plateau";
+import { Direction, Action } from "../src/globalValue/direction";
+import { Grid, Position } from '../src/globalValue/grid';
 import { TurnLeft, TurnRight , TurnBack, MoveForward} from "./moveCommand/differentMoveCommand";
 import { MainCommand } from "./moveCommand/command";
 

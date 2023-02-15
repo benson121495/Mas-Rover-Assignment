@@ -1,4 +1,4 @@
-import { Direction } from "../direction";
+import { Direction } from "../globalValue/direction";
 import { TurnCommand } from './turnCommand';
 import { MoveCommandExecutor } from './moveCommand';
 

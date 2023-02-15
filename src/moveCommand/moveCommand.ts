@@ -1,8 +1,8 @@
 
 import { MainCommand } from "./command";
-import { Plateau } from "../plateau";
-import { Direction, Action } from "../direction";
-import { Grid, Position } from '../grid';
+import { Plateau } from "../globalValue/plateau";
+import { Direction, Action } from "../globalValue/direction";
+import { Grid, Position } from '../globalValue/grid';
 
 export abstract class MoveCommandExecutor implements MainCommand {
     private grid: Grid;
@@ -56,7 +56,6 @@ export abstract class MoveCommandExecutor implements MainCommand {
     }
 
     private newCoordinate(currentCoordinate: number, direction: Direction, steps: Map<Direction, number>, limit: number): number {
-        // const step = steps.get(direction);
         const step = Number(steps.get(direction));
         const newCoordinate = currentCoordinate + step;
         return threshold(newCoordinate, limit);

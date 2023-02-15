@@ -1,4 +1,4 @@
-import { Plateau } from "../plateau";
+import { Plateau } from "../globalValue/plateau";
 
 export interface MainCommand {
     execute(currentState: Plateau): Plateau;

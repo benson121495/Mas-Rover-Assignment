@@ -1,6 +1,6 @@
 import { MainCommand } from './command';
-import { Plateau } from "../plateau";
-import { Direction } from "../direction";
+import { Plateau } from "../globalValue/plateau";
+import { Direction } from "../globalValue/direction";
 
 export abstract class TurnCommand implements MainCommand {
     execute(currentState: Plateau): Plateau {
